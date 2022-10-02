@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NovelWebApp.Data;
 
@@ -11,9 +12,10 @@ using NovelWebApp.Data;
 namespace NovelWebApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221001013310_addedmodels")]
+    partial class addedmodels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,7 +237,7 @@ namespace NovelWebApp.Data.Migrations
                     b.Property<int>("ChapterNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("NovelId")
+                    b.Property<int?>("NovelId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -287,9 +289,11 @@ namespace NovelWebApp.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NovelId"), 1L, 1);
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("NovelId");
@@ -352,9 +356,7 @@ namespace NovelWebApp.Data.Migrations
                 {
                     b.HasOne("NovelWebApp.Models.Novel", "Novel")
                         .WithMany("Chapters")
-                        .HasForeignKey("NovelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NovelId");
 
                     b.Navigation("Novel");
                 });

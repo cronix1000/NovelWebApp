@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using NovelWebApp.Models;
 
 namespace NovelWebApp.Data
 {
@@ -9,5 +10,7 @@ namespace NovelWebApp.Data
             : base(options)
         {
         }
+        public DbSet<NovelWebApp.Models.Novel> Novel { get; set; }
+        public DbSet<NovelWebApp.Models.Chapter> Chapter { get; set; }
     }
 }
