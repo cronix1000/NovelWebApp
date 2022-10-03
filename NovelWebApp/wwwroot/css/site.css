@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+.editor-container {
+    height: 1000px;
+    padding-bottom: 40px;
+    //fix bug here
+}
