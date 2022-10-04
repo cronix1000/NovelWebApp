@@ -14,10 +14,27 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    
+    margin:0px;
+/*    margin-bottom: 60px;*/
+    background: #203847;
+    background-image: url("../Images/fant3.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: 100%;
+
+}
+.container {
+    background: #E2E9F0;
+    border-color: #ffffff;
+    /*    height: 100vh;*/
+    /*    max-width: 650px;*/
+}
+.holder {
+    background-color: ghostwhite;
+    padding: 2%;
 }
 .editor-container {
     height: 1000px;
     padding-bottom: 40px;
-    //fix bug here
 }
