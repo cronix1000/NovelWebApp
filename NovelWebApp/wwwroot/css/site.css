@@ -24,11 +24,11 @@ body {
     height: 100%;
 
 }
-.container {
+.container-height {
     background: #E2E9F0;
     border-color: #ffffff;
-    /*    height: 100vh;*/
-    /*    max-width: 650px;*/
+    height: 100vh;
+
 }
 .holder {
     background-color: ghostwhite;

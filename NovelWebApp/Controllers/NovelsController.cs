@@ -24,9 +24,13 @@ namespace NovelWebApp.Controllers
         {
               return View(await _context.Novel.ToListAsync());
         }
+        public IActionResult ReadNovel()
+        {
+            return View();
+        }
 
-        // GET: Novels/Details/5
-        public async Task<IActionResult> Details(int? id)
+// GET: Novels/Details/5
+public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Novel == null)
             {
