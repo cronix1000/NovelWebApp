@@ -12,7 +12,7 @@
     <dl class="row">
         @foreach (var chap in @Model.Chapters)
         {
-             <a asp-action="Chapter" asp-route-id="@chap.ChapterId">Chapter</a>
+             <a asp-controller="Chapter" asp-action="Chapter.Details" asp-route-id="@chap.ChapterId">Chapter</a>
         }
     </dl>
 </div>
