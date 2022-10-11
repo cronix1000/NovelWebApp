@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<NovelWebApp.Models.Novel>
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -17,6 +18,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -30,7 +34,12 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.NovelId">View Novel</a> 
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.NovelId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.NovelId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.NovelId">Delete</a>
             </td>
         </tr>
 }

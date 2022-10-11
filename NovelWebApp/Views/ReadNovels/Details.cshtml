@@ -1,0 +1,22 @@
+﻿@model NovelWebApp.Models.Novel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Novel</h4>
+    <hr />
+    <dl class="row">
+        @foreach (var chap in @Model.Chapters)
+        {
+             <a asp-action="Chapter" asp-route-id="@chap.ChapterId">Chapter</a>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.NovelId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

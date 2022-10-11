@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,27 +10,23 @@ using NovelWebApp.Models;
 
 namespace NovelWebApp.Controllers
 {
-    public class NovelsController : Controller
+    public class ReadNovelsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public NovelsController(ApplicationDbContext context)
+        public ReadNovelsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Novels
+        // GET: ReadNovels
         public async Task<IActionResult> Index()
         {
               return View(await _context.Novel.ToListAsync());
         }
-        public IActionResult ReadNovel()
-        {
-            return View();
-        }
 
-// GET: Novels/Details/5
-public async Task<IActionResult> Details(int? id)
+        // GET: ReadNovels/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Novel == null)
             {
@@ -47,26 +43,21 @@ public async Task<IActionResult> Details(int? id)
             return View(novel);
         }
 
-        // GET: Novels/Create
+        // GET: ReadNovels/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Novels/Create
+        // POST: ReadNovels/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NovelId,Name,Description")] Novel novel, IFormFile? Photo)
+        public async Task<IActionResult> Create([Bind("NovelId,Name,Description,Photo")] Novel novel)
         {
             if (ModelState.IsValid)
             {
-                // upload phpto if any before creating the new product in the db as product needs the Photo name
-                if (Photo != null) {
-                    var fileName = UploadPhoto(Photo);
-                    novel.Photo = fileName;
-                }
                 _context.Add(novel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -74,7 +65,7 @@ public async Task<IActionResult> Details(int? id)
             return View(novel);
         }
 
-        // GET: Novels/Edit/5
+        // GET: ReadNovels/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Novel == null)
@@ -90,12 +81,12 @@ public async Task<IActionResult> Details(int? id)
             return View(novel);
         }
 
-        // POST: Novels/Edit/5
+        // POST: ReadNovels/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NovelId,Name,Description")] Novel novel, IFormFile? Photo, string? CurrentPhoto)
+        public async Task<IActionResult> Edit(int id, [Bind("NovelId,Name,Description,Photo")] Novel novel)
         {
             if (id != novel.NovelId)
             {
@@ -106,14 +97,6 @@ public async Task<IActionResult> Details(int? id)
             {
                 try
                 {
-                    if (Photo != null)
-                    {
-                        var fileName = UploadPhoto(Photo);
-                        novel.Photo = fileName;
-                    }
-                    else { 
-                        novel.Photo = CurrentPhoto; 
-                    }
                     _context.Update(novel);
                     await _context.SaveChangesAsync();
                 }
@@ -133,7 +116,7 @@ public async Task<IActionResult> Details(int? id)
             return View(novel);
         }
 
-        // GET: Novels/Delete/5
+        // GET: ReadNovels/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Novel == null)
@@ -151,7 +134,7 @@ public async Task<IActionResult> Details(int? id)
             return View(novel);
         }
 
-        // POST: Novels/Delete/5
+        // POST: ReadNovels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -173,25 +156,6 @@ public async Task<IActionResult> Details(int? id)
         private bool NovelExists(int id)
         {
           return _context.Novel.Any(e => e.NovelId == id);
-        }
-
-        private static string UploadPhoto(IFormFile Photo) {
-            // get temp location of uploaded file
-            var filePath = Path.GetTempFileName();
-
-            // create unique name to prevent overwrites using Globally Unique Id class
-
-            var fileName = Guid.NewGuid() + "-" + Photo.FileName;
-
-            //set destination path to wwwroot/img/products
-            var uploadPath = System.IO.Directory.GetCurrentDirectory() + "\\wwwroot\\Images\\NovelPictures\\" + fileName;
-
-            // copy the file to the targer dir
-            using (var stream = new FileStream(uploadPath, FileMode.Create)) {
-                Photo.CopyTo(stream);
-            }
-
-            return fileName;
         }
     }
 }

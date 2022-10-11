@@ -5,42 +5,50 @@
 }
 <section class="container border-0">
     <div class="holder">
-<h1>Index</h1>
+        <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Photo)
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
+                    </th>
+                    <th>
                         @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
                 @foreach (var item in Model)
                 {
-            <tr>
-                <td>
+                    <tr>
+                        <td>
+                            @if (item.Photo != null)
+                            {
+                                <img src="~/images/NovelPictures/@item.Photo" alt="Novel Photo" class="thumb" />
+                            }
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.NovelId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.NovelId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.NovelId">Delete</a>
-                        <a class="nav-link text-dark" asp-route-id="@item.NovelId" asp-area="" asp-controller="Chapters" asp-action="Create">Create Chapter</a>
-                </td>
-            </tr>
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.NovelId">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@item.NovelId">Delete</a>
+                            <a class="nav-link text-dark" asp-route-id="@item.NovelId" asp-area="" asp-controller="Chapters" asp-action="Create">Chapter</a>
+                        </td>
+                    </tr>
                 }
-    </tbody>
-</table>
-</div>
+            </tbody>
+        </table>
+    </div>
 </section>
