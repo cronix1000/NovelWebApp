@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<NovelWebApp.Models.Chapter>
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Edit Chapter";
 }
 
 <h1>View</h1>
@@ -19,9 +19,6 @@
                 @Html.DisplayNameFor(model => model.ChapterNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.chapterStory)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Novel)
             </th>
             <th></th>
@@ -37,10 +34,7 @@
                 @Html.DisplayFor(modelItem => item.ChapterNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.chapterStory)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Novel.NovelId)
+                @Html.DisplayFor(modelItem => item.Novel.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ChapterId">Edit</a> |

@@ -46,6 +46,7 @@
                             <a asp-action="Delete" asp-route-id="@item.NovelId">Delete</a> 
                             <a asp-route-id="@item.NovelId" asp-area="" asp-controller="Chapters" asp-action="Create">Write</a> 
                             <a asp-route-id="@item.NovelId" asp-area="" asp-controller="ReadNovels" asp-action="Details">Read</a>
+                            <a asp-controller="Chapters" asp-action="Index">Edit Chapters</a> 
                         </td>
                     </tr>
                 }
