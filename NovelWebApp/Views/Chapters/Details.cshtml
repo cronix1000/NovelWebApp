@@ -9,7 +9,7 @@
 <div>
     <h4>Chapter</h4>
     <hr />
-    <dl class="row">
+    <dl class="col">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -25,18 +25,14 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.chapterStory)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.chapterStory)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Novel)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Novel.NovelId)
+        <dd class = "col-sm-10 wrap">
+            <p >@Html.DisplayFor(model => model.chapterStory)</p>
         </dd>
     </dl>
+
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.ChapterId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Novels" asp-action="Index">Back to List</a>
 </div>

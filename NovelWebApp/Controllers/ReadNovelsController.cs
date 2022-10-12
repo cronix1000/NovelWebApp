@@ -33,7 +33,8 @@ namespace NovelWebApp.Controllers
                 return NotFound();
             }
 
-            var novel = await _context.Novel
+            var novel = await _context.Novel.Include(n => n.Chapters)
+
                 .FirstOrDefaultAsync(m => m.NovelId == id);
             if (novel == null)
             {

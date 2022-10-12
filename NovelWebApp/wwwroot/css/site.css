@@ -57,6 +57,10 @@ a:hover {
 .btn-primary {
     background-color: #E040FB;
 }
+
+.wrap {
+    word-wrap: break-word;
+}
 /*footer {
     background-color: #BDBDBD;
 }*/
