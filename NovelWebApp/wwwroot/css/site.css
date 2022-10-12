@@ -28,7 +28,7 @@ body {
 .container-height {
     background: #E2E9F0;
     border-color: #ffffff;
-    height: 100vh;
+    height: 100%;
 
 }
 .holder {
@@ -60,6 +60,10 @@ a:hover {
 
 .wrap {
     word-wrap: break-word;
+}
+
+.word-container {
+    height: 100%;
 }
 /*footer {
     background-color: #BDBDBD;

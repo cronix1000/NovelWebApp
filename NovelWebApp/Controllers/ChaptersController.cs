@@ -77,7 +77,7 @@ namespace NovelWebApp.Controllers
             {
                 _context.Add(chapter);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(actionName: "Index", controllerName: "Novels");
             }
             ViewData["NovelId"] = new SelectList(_context.Novel, "NovelId", "NovelId", chapter.NovelId);
             return View(chapter);
