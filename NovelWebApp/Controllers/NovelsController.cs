@@ -175,6 +175,8 @@ public async Task<IActionResult> Details(int? id)
           return _context.Novel.Any(e => e.NovelId == id);
         }
 
+
+        //Written Rich Freeman 
         private static string UploadPhoto(IFormFile Photo) {
             // get temp location of uploaded file
             var filePath = Path.GetTempFileName();
