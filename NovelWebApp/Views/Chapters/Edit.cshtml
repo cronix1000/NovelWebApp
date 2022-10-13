@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Edit";
+    <!-- Include stylesheet -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 }
 
 <h1>Edit</h1>
@@ -23,23 +25,28 @@
                 <input asp-for="ChapterNumber" class="form-control" />
                 <span asp-validation-for="ChapterNumber" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="chapterStory" class="control-label"></label>
-                <input asp-for="chapterStory" class="form-control" />
-                <span asp-validation-for="chapterStory" class="text-danger"></span>
+            <div class="col-md-10">
+                <div class="form-group form-group-lg">
+                    <div class="form-group">
+                        <div class="editor-container">
+                            <label asp-for="chapterStory" class="control-label"></label>
+                            <textarea asp-for="chapterStory" class="form-control"></textarea> 
+                            <span asp-validation-for="chapterStory" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="NovelId" class="control-label"></label>
                 <select asp-for="NovelId" class="form-control" asp-items="ViewBag.NovelId"></select>
                 <span asp-validation-for="NovelId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group py-3">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

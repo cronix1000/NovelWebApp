@@ -96,7 +96,7 @@ namespace NovelWebApp.Controllers
             {
                 return NotFound();
             }
-            ViewData["NovelId"] = new SelectList(_context.Novel, "NovelId", "NovelId", chapter.NovelId);
+            ViewData["NovelId"] = new SelectList(_context.Novel, "NovelId", "Name", chapter.NovelId);
             return View(chapter);
         }
 

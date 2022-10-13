@@ -2,7 +2,16 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+<div class="text-center home-container">
+    <p >
+        NovelWebApp created by Idan Gomberg<br>This website was created to have people create and upload web novels for 
+        people looking to share there stories on the internet, This website come with the ability to create new novels and new 
+        chapters all from one screen, with the editing of a chapters from another.
+
+        <br>used https://quilljs.com api to create text editor 
+        <!--Added links to homepage-->
+        <a class="nav-link" asp-area="" asp-controller="Novels" asp-action="Index">Novels Index</a>
+        <a class="nav-link" asp-controller="Chapters" asp-action="Index">Chapters Index</a>
+    </p>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
