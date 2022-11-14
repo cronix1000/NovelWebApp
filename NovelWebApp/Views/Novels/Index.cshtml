@@ -42,11 +42,21 @@
                             @Html.DisplayFor(modelItem => item.Description)
                         </td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.NovelId">Edit</a> 
-                            <a asp-action="Delete" asp-route-id="@item.NovelId">Delete</a> 
-                            <a asp-route-id="@item.NovelId" asp-area="" asp-controller="Chapters" asp-action="Create">Write</a> 
-                            <a asp-route-id="@item.NovelId" asp-area="" asp-controller="ReadNovels" asp-action="Details">Read</a>
-                            <a asp-controller="Chapters" asp-action="Index">Edit Chapters</a> 
+                            @if (User.Identities.Any(i => i.IsAuthenticated))
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.NovelId">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@item.NovelId">Delete</a>
+                                <a asp-route-id="@item.NovelId" asp-area="" asp-controller="Chapters" asp-action="Create">Write</a>
+                                <a asp-controller="Chapters" asp-action="Index">Edit Chapters</a>
+                            }
+                            else
+                            {
+                                <a asp-action="Details" asp-route-id="@item.NovelId">Details</a>
+                                <a asp-route-id="@item.NovelId" asp-area="" asp-controller="ReadNovels" asp-action="Details">Read</a>
+                            }
+
+                           
+                            
                         </td>
                     </tr>
                 }

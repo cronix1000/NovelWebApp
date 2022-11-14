@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +12,7 @@ using NovelWebApp.Models;
 
 namespace NovelWebApp.Controllers
 {
+    [Authorize]
     public class ReadNovelsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -18,13 +21,13 @@ namespace NovelWebApp.Controllers
         {
             _context = context;
         }
-
+        [AllowAnonymous]
         // GET: ReadNovels
         public async Task<IActionResult> Index()
         {
               return View(await _context.Novel.ToListAsync());
         }
-
+        [AllowAnonymous]
         // GET: ReadNovels/Details/5
         public async Task<IActionResult> Details(int? id)
         {
