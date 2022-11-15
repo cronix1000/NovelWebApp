@@ -33,6 +33,11 @@
 
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.ChapterId">Edit</a> |
+    
+    @if (User.Identities.Any(i => i.IsAuthenticated))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.NovelId">Edit</a>
+
+    }
     <a asp-controller="Novels" asp-action="Index">Back to List</a>
 </div>
