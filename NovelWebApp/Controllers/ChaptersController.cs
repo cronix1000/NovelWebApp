@@ -28,7 +28,7 @@ namespace NovelWebApp.Controllers
             var applicationDbContext = _context.Chapter.Include(c => c.Novel);
             return View(await applicationDbContext.ToListAsync());
         }
-
+        [AllowAnonymous]
         // GET: Chapters/Details/5
         public async Task<IActionResult> Details(int? id)
         {
