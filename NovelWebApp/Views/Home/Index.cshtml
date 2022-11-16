@@ -11,7 +11,7 @@
         <br>used https://quilljs.com api to create text editor 
         <!--Added links to homepage-->
         <a class="nav-link" asp-area="" asp-controller="Novels" asp-action="Index">Novels Index</a>
-        @foreach (var chap in @Model.Chapters)
+        @if (User.Identities.Any(i => i.IsAuthenticated))
         {
         <a class="nav-link" asp-controller="Chapters" asp-action="Index">Chapters Index</a>
         }
