@@ -6,10 +6,12 @@
 <section class="container border-0">
     <div class="holder">
         <h1>Index</h1>
-
-        <p>
-            <a asp-action="Create">Create New</a>
-        </p>
+        @if (User.Identities.Any(i => i.IsAuthenticated))
+        {
+            <p>
+                <a asp-action="Create">Create New</a>
+            </p>
+        }
         <table class="table">
             <thead>
                 <tr>
