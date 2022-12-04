@@ -25,7 +25,7 @@ namespace NovelWebApp.Controllers
         // GET: Novels
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Novel.ToListAsync());
+              return View("Index", await _context.Novel.ToListAsync());
         }
         public IActionResult ReadNovel()
         {
@@ -61,7 +61,7 @@ namespace NovelWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NovelId,Name,Description")] Novel novel, IFormFile? Photo)
+        public async Task<IActionResult> Create([Bind("NovelId,Name,Description,MainTags")] Novel novel, IFormFile? Photo)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace NovelWebApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NovelId,Name,Description")] Novel novel, IFormFile? Photo, string? CurrentPhoto)
+        public async Task<IActionResult> Edit(int id, [Bind("NovelId,Name,Description, MainTags")] Novel novel, IFormFile? Photo, string? CurrentPhoto)
         {
             if (id != novel.NovelId)
             {

@@ -1,4 +1,6 @@
-﻿namespace NovelWebApp.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace NovelWebApp.Models
 {
     public class Novel
     {
@@ -8,7 +10,8 @@
         public string? Photo { get; set; }
         public List<Chapter>? Chapters { get; set; }
         public List<Comment>? Comments { get; set; }
-
+        public String? Author { get; set; }
+        public String? MainTags{ get; set; }
 
     }
 }
