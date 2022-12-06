@@ -9,3 +9,6 @@ The azure link https://novelwebapp.azurewebsites.net
 Possibly counts as extra but sighlty more complex model views that loop over chapters specific to a novel
 
 CSSL: Bootstrap, Vannila CSS
+
+Test Account:
+rich@gc.ca / Test123$
