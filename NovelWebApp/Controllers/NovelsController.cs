@@ -37,14 +37,14 @@ namespace NovelWebApp.Controllers
         {
             if (id == null || _context.Novel == null)
             {
-                return NotFound();
+                return View("404");
             }
 
             var novel = await _context.Novel
                 .FirstOrDefaultAsync(m => m.NovelId == id);
             if (novel == null)
             {
-                return NotFound();
+                return View("404");
             }
 
             return View(novel);
