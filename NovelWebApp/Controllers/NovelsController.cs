@@ -47,7 +47,7 @@ namespace NovelWebApp.Controllers
                 return View("404");
             }
 
-            return View(novel);
+            return View("Details",novel);
         }
 
         // GET: Novels/Create
@@ -66,13 +66,17 @@ namespace NovelWebApp.Controllers
             if (ModelState.IsValid)
             {
                 // upload phpto if any before creating the new product in the db as product needs the Photo name
-                if (Photo != null) {
+                if (Photo != null)
+                {
                     var fileName = UploadPhoto(Photo);
                     novel.Photo = fileName;
                 }
                 _context.Add(novel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            else { 
+                
             }
             return View(novel);
         }
@@ -82,15 +86,15 @@ namespace NovelWebApp.Controllers
         {
             if (id == null || _context.Novel == null)
             {
-                return NotFound();
+                return View("404");
             }
 
             var novel = await _context.Novel.FindAsync(id);
             if (novel == null)
             {
-                return NotFound();
+                return View("404");
             }
-            return View(novel);
+            return View("edit",novel);
         }
 
         // POST: Novels/Edit/5
@@ -102,7 +106,7 @@ namespace NovelWebApp.Controllers
         {
             if (id != novel.NovelId)
             {
-                return NotFound();
+                return View("404");
             }
 
             if (ModelState.IsValid)
@@ -124,7 +128,7 @@ namespace NovelWebApp.Controllers
                 {
                     if (!NovelExists(novel.NovelId))
                     {
-                        return NotFound();
+                        return View("404");
                     }
                     else
                     {
@@ -133,7 +137,7 @@ namespace NovelWebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(novel);
+            return View("edit",novel);
         }
 
         // GET: Novels/Delete/5
@@ -141,17 +145,17 @@ namespace NovelWebApp.Controllers
         {
             if (id == null || _context.Novel == null)
             {
-                return NotFound();
+                return View("404");
             }
 
             var novel = await _context.Novel
                 .FirstOrDefaultAsync(m => m.NovelId == id);
             if (novel == null)
             {
-                return NotFound();
+                return View("404");
             }
 
-            return View(novel);
+            return View("Delete",novel);
         }
 
         // POST: Novels/Delete/5
@@ -168,12 +172,12 @@ namespace NovelWebApp.Controllers
             {
                 _context.Novel.Remove(novel);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool NovelExists(int id)
+        public bool NovelExists(int id)
         {
           return _context.Novel.Any(e => e.NovelId == id);
         }
